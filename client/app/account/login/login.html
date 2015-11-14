@@ -1,0 +1,43 @@
+<ion-view view-title="Login">
+    <ion-content>
+        <form class="form" name="form" ng-submit="login(form)" novalidate>
+          <div class="padding">
+            <center><h1>JiaYong</h1></center>
+        </div>
+        <div class="list list-inset">
+          <label class="item item-input">
+          <i class="icon ion-email placeholder-icon"></i>
+          <input type="email" placeholder="Username" ng-model="user.email" required>
+        </label>
+
+        <label class="item item-input">
+          <i class="icon ion-key placeholder-icon"></i>
+          <input type="password" placeholder="Password" ng-model="user.password" required>
+        </label>
+        </div>
+
+        <!-- <div class="list has-error">
+          <p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && submitted">
+             Please enter your email and password.
+          </p>
+          <p class="help-block" ng-show="form.email.$error.email && submitted">
+             Please enter a valid email.
+          </p>
+
+          <p class="help-block">{{ errors.other }}</p>
+        </div>     -->    
+
+        <div class="padding">
+          <button class="button button-block button-assertive" type="submit" >
+            Login
+          </button>
+          <a class="button button-block button-clear button-assertive" href="/signup">
+            Don't have an account? Sign up!
+          </a>
+        </div>
+
+      </form>
+    </ion-content>
+</ion-view>
+
+

@@ -1,0 +1,38 @@
+ <ion-view view-title="Edit Task">        
+    <ion-content> 
+    <form class="list" ng-model="form">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Task Name</span>
+        <input type="text" placeholder="Name of the Task" ng-model="edit.name">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Description</span>
+        <input type="text" placeholder="Specific steps or actions" ng-model="edit.description">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Expectations</span>
+        <input type="text" placeholder="Your expected outcome" ng-model="edit.exp">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Min Amount ($)</span>
+        <input type="number" placeholder="Minimum amount paid for completion" ng-model="edit.min">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Max Amount ($)</span>
+        <input type="number" placeholder="Maximum amount paid for completion" ng-model="edit.max">
+      </label>
+      
+      <div class="padding">
+          <button class="button button-block button-assertive" ng-if="user.children.length!=0" type="submit" 
+          ng-click="editTask(edit.name,edit.description,edit.exp,edit.min,edit.max)">
+            Create Task!
+          </button>
+          <button class="button button-block button-assertive" ng-if="user.children.length==0" type="submit" 
+          ng-click="create(name,description,exp,min,max)">
+            Propose Task!
+          </button>
+      </div>
+
+    </div>
+    </ion-content>
+</ion-view>

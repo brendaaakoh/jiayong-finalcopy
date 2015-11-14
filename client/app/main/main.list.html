@@ -1,0 +1,26 @@
+ <ion-view view-title="Find Tasks">
+    <ion-content>
+        <ion-list>
+        <div ng-if="tasksAvailable.length>0">
+          <a href ui-sref="app.details({id:task.id})" ng-repeat="task in tasksAvailable">
+          <ion-item class="item"> 
+          <h2>{{task.title}}</h2>
+          <p><i>{{task.desc}}<i></p>
+          <span>
+            ${{(task.min+task.max)/2 | number:0}}
+          </span>
+          </ion-item>
+        </a>
+        </div>
+        
+        <div ng-if="tasksAvailable.length==0" class="empty-content">
+          <center>
+            <h1>Oops.</h1>
+            <p>Seems like there isn't any tasks!</p>
+            <button class="button button-balanced" type="button" ng-click="clearHistoryAndGo('app.create')">Propose Tasks!</button>
+          </center>
+        </div>
+
+      </ion-list>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,63 @@
+
+<ion-view view-title="Sign Up" >
+<ion-header-bar align-title="center" class="bar bar-header bar-assertive">
+ <h1 class="title">Sign Up</h1>
+</ion-header-bar>
+
+<ion-content class="padding">      
+  
+  <form class="form" name="form" ng-submit="register(form)" novalidate>
+    <div class="list" ng-class="{ 'has-success': form.name.$valid && submitted, 'has-error': form.name.$invalid && submitted }">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Name</span>
+        <input type="text" placeholder="John" name="name" ng-model="user.name" required/>
+          
+        <p class="help-block" ng-show="form.name.$error.required && submitted">
+            A name is required
+        </p>
+      </label>
+        
+    <div class="list" ng-class="{ 'has-success': form.email.$valid && submitted,'has-error': form.email.$invalid && submitted }">
+      <label class="item item-input item-stacked-label">
+          <span class="input-label">Email</span>
+          <input type="email" name="email" placeholder="john@gmail.com" ng-model="user.email" required mongoose-error/>
+          
+          <p class="help-block" ng-show="form.email.$error.email && submitted">
+            This is not a valid E-Mail.
+          </p>
+          <p class="help-block" ng-show="form.email.$error.required && submitted">
+            What's your email address?
+          </p>
+          <p class="help-block" ng-show="form.email.$error.mongoose">
+            {{ errors.email }}
+          </p>
+        </label>
+        
+    <div class="list" ng-class="{ 'has-success': form.password.$valid && submitted,'has-error': form.password.$invalid && submitted }">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Password</span>
+        <input type="password" name="password" placeholder="Password" ng-model="user.password" ng-minlength="3" required mongoose-error/>
+   
+        <p class="help-block" ng-show="(form.password.$error.minlength || form.password.$error.required) && submitted">
+          Password must be at least 3 characters.
+        </p>
+          
+        <p class="help-block" ng-show="form.password.$error.mongoose">
+          {{ errors.password }}
+        </p>
+      </label>
+    </div>
+    </div>
+    </div>
+        <div class="padding">
+          <button class="button button-block button-assertive" type="submit">
+            Sign up
+          </button>
+          <a class="button button-block button-clear button-assertive" href="/">
+            Already have an account? Login!
+          </a>
+        </div>
+
+      </form>
+    </ion-content>
+</ion-view>

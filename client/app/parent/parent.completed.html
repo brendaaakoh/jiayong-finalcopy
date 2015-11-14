@@ -1,0 +1,39 @@
+<!-- <body ng-app="jiayongApp" ng-controller="MainCtrl">
+ -->
+   <ion-header-bar class="bar-subheader">
+        <div class="button-bar">
+            <div class="button-bar">
+                <a class="button button-clear button-assertive" tab-state ng-click="goto('app.parentfind')">Created</a>
+                <a class="button button-clear button-assertive" tab-state ng-click="goto('app.parentpending')">Pending</a>
+                <a class="button button-clear button-assertive" tab-state ng-click="goto('app.parentcompleted')">Completed</a>
+                <a class="button button-clear button-assertive" tab-state ng-click="goto('app.parentrejected')">Rejected</a>
+            </div>
+        </div>
+  </ion-header-bar>
+ <ion-view view-title="Completed">  
+    <ion-content>
+        <ion-list>
+        <div ng-if="tasks.length>0">
+          <a ng-repeat="task in tasks" ng-if="task.status == 'Completed'" href ui-sref="app.details({id:task.id})">
+            <ion-item class="item"> 
+          <h2>{{task.title}}</h2>
+          <p><i>{{task.desc}}<i></p>
+          <span>
+            Earned: ${{task.earnings}}
+          </span>
+          </ion-item>
+        </div>
+          </a>
+        </div>
+
+        <div ng-if="tasks.length==0" class="empty-content">
+          <center>
+            <h1>Oops.</h1>
+            <p>Seems like you haven't completed any tasks!</p>
+            <button class="button button-balanced" type="button" ng-click="clearHistoryAndGo('app.create')">Find Tasks!</button>
+          </center>
+        </div>
+
+      </ion-list>
+    </ion-content>
+</ion-view>

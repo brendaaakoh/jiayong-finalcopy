@@ -1,0 +1,106 @@
+ <ion-view view-title="{{task.title}}">
+           
+    <ion-content> 
+		<div class="list card">	
+		  <div class="item item-icon-left item-text-wrap">
+		  	<label class="item-stacked-label">
+        	<span class="input-label">Description</span></label>
+		    <i class="icon ion-clipboard"></i>
+    			{{task.desc}}
+		  </div>
+
+		  <div class="item item-icon-left item-text-wrap">
+		  	<label class="item-stacked-label">
+        	<span class="input-label"> Expectations</span></label>
+		    <i class="icon ion-asterisk"></i>
+    			{{task.exp}}
+		  </div>
+
+		  <div ng-if="task.prereq != ''" class="item item-icon-left item-text-wrap">
+		  	<label class="item-stacked-label">
+        	<span class="input-label"> Prerequisite Task</span></label>
+		    <i class="icon ion-asterisk"></i>
+    			{{task.prereq}}
+		  </div>
+
+		  <div class="item item-icon-left item-text-wrap">
+		  	<label class="item-stacked-label">
+        	<span class="input-label">Status</span></label>
+		    <i class="icon ion-information-circled"></i>
+		    	Currently {{task.status}}
+		    	<p ng-if="(task.status == 'Rejected Proposal' || task.status == 'Rejected Completion') && task.remarks != ''">Reason: {{task.remarks}}</p>
+		    	<p ng-if="(task.status == 'Rejected Proposal' || task.status == 'Rejected Completion') && task.remarks == ''">No explanation for rejection</p>
+		  </div>
+
+		  <div class="item item-icon-left item-text-wrap" ng-if="task.status !='Completed'">
+			<label class="item-stacked-label">
+        	<span class="input-label">Earnings</span></label>
+		    <div class="col-20">
+		    	<i class="icon ion-cash"></i>
+			</div> 
+			<table>
+				<tr>
+					<td class="padding-right">Min: ${{task.min}}</td>
+					<td class="padding-right">Avg: ${{(task.min+task.max)/2 | number:0}}</td>
+					<td class="padding-right">Max: ${{task.max}}</td>
+				</tr>
+				</table>
+		  </div>
+
+		  <!-- camera function goes here! -->
+		  <div ng-if="task.status == 'In Progress'" class="item item-icon-left item-text-wrap">
+		  	<label class="item-stacked-label">
+        	<span class="input-label">Photo(s)</span></label>
+		    <i class="icon ion-images"></i>
+		    	<button class="button button-block button-calm icon-left ion-camera">Take Photo(s)!</button>
+		  </div>
+
+		  <!-- Earnings Field -->
+		  <div class="item item-icon-left item-text-wrap" ng-if="task.status =='Completed'">
+			<label class="item-stacked-label">
+        	<span class="input-label">Earned</span></label>
+		    <div class="col-20">
+		    	<i class="icon ion-cash"></i>
+		    	${{task.earnings}}
+			</div> 
+		  </div>
+		</div>
+		<div ng-if="task.status =='In Progress'" class="row" style="margin: 0 auto; width:95%">
+			<div class="col">
+				<button class="button button-block button-balanced icon-left ion-checkmark" ng-click="sendApproval({{task.id}})">Complete Task!</button>
+			</div>
+			<div class="col">
+				<button class="button button-block button-assertive icon-left ion-close" ng-click="remove({{task.id}})">Remove Task!</button>
+			</div>
+		</div>
+
+		<div ng-if="task.status =='Available'" class="row" style="margin: 0 auto; width:95%">
+			<div class="col">
+				<button class="button button-block button-balanced icon-left ion-checkmark" ng-click="takeup({{task.id}})">Take up task!</button>
+			</div>
+		</div>
+
+		<!-- resubmit completion -->
+		<div ng-if="task.status =='Rejected Proposal'" class="row" style="margin: 0 auto; width:95%">
+				<div class="col padding-left">
+				<a class="button button-block button-balanced icon-left ion-edit" ng-href="edit{{task.id}}">Edit Proposal!</a>
+			</div>
+			<div class="col padding-left">
+				<button class="button button-block button-assertive icon-left ion-close" ng-click="remove({{task.id}})">Remove Task!</button>
+			</div>
+			</div>
+		</div>
+
+		<!-- resubmit proposal  -->
+		<div ng-if="task.status =='Rejected Completion'" class="row" style="margin: 0 auto; width:95%">
+				<div class="col">
+				<button class="button button-block button-balanced icon-left ion-checkmark" ng-click="sendApproval({{task.id}})">Re-submit Task!</button>
+			</div>
+			<div class="col">
+				<button class="button button-block button-assertive icon-left ion-close" ng-click="remove({{task.id}})">Remove Task!</button>
+			</div>
+			</div>
+		</div>
+   
+   </ion-content>
+</ion-view>

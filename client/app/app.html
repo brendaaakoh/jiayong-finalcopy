@@ -1,0 +1,52 @@
+
+
+<ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
+<ion-nav-back-button class="button-clear" ng-click="goback()">
+           <i class="icon ion-ios-arrow-back"></i>
+          </button>
+      </ion-nav-back-button>   
+</ion-nav-bar>
+<ion-nav-view name="menuContent"></ion-nav-view>
+
+<div class="tabs tabs-icon-top" ng-if="user.children.length==0">
+  <a class="tab-item" href ng-click="goto('app.main')">
+  	<i class="icon ion-home"></i>
+    Home
+  </a>
+  <a class="tab-item" href ng-click="goto('app.progress')">
+    <i class="icon ion-tshirt"></i>
+    My Tasks
+  </a>
+  <a class="tab-item" href ng-click="goto('app.find')">
+  	<i class="icon ion-search"></i>
+    Find Tasks
+  </a>
+    <a class="tab-item" href ng-click="goto('app.create')">
+    <i class="icon ion-compose"></i>
+    Propose Task
+  </a>
+  <a class="tab-item" href ng-click="goto('app.profile')" >
+    <i class="icon ion-person"></i>
+    Profile
+  </a>
+</div>
+
+
+<div class="tabs tabs-icon-top" ng-if="user.children.length>0">
+  <a class="tab-item" href ng-click="goto('app.parent')">
+    <i class="icon ion-home"></i>
+    Home
+  </a>
+  <a class="tab-item" href ng-click="goto('app.parentpending')">
+    <i class="icon ion-clipboard"></i>
+    View Tasks
+  </a>
+    <a class="tab-item" href ng-click="goto('app.create')">
+    <i class="icon ion-compose"></i>
+    Create Task
+  </a>
+  <a class="tab-item" href ng-click="goto('app.profile')" >
+    <i class="icon ion-person"></i>
+    Profile
+  </a>
+</div>

@@ -1,0 +1,32 @@
+ <ion-view title="Welcome!">
+   <ion-content class = "padding">
+    <center>
+    	    <button class="button button-balanced" type="button" ng-click="viewTask(1)">Testing Function!</button>
+
+    <i class="icon ion-happy-outline" style="font-size: 100px;"></i>
+    <h2>Welcome back {{user.name}}!</h2></center>
+      <ion-list>
+          <div class="list card">
+            <a href= "/progress" class="item item-icon-left">
+              <i class="icon ion-tshirt-outline"></i>
+                <p>You have <b>{{tasksProgress.length}}</b> task(s) currently In Progress!</p>
+              </a>
+
+              <a href= "/pending"class="item item-icon-left">
+              <i class="icon ion-android-notifications-none"></i>
+                <p>You have <b>{{tasksPending.length}}</b> task(s) which are Pending!</p>
+              </a>
+
+              <a href= "/rejected" class="item item-icon-left" ng-if="tasksRejected.length>0">
+              <i class="icon ion-close-circled"></i>
+                <p>You have <b>{{tasksRejected.length}}</b> task(s) Rejected!</p>
+              </a>
+
+              <a href= "/findTasks" class="item item-icon-left">
+              <i class="icon ion-bag"></i>
+                <p>There are currently <b>{{tasksAvailable.length}}</b> tasks you can take up!</p>
+              </a>
+          </div>
+      </ion-list>
+    </ion-content>
+</ion-view>

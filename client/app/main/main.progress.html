@@ -1,0 +1,39 @@
+  <ion-header-bar class="bar-subheader"> 
+        <div class="button-bar">
+            <div class="button-bar">
+                <a class="button button-clear button-assertive" tab-state ng-click="goto('app.progress')">In Progress</a>
+                <a class="button button-clear button-assertive" tab-state ng-click="goto('app.pending')">Pending</a>
+                <a class="button button-clear button-assertive" tab-state ng-click="goto('app.completed')">Completed</a>
+                <a class="button button-clear button-assertive" tab-state ng-click="goto('app.rejected')">Rejected</a>
+            </div>
+        </div>
+  </ion-header-bar>
+ 
+ <ion-view view-title="In Progress">      
+    <ion-content> 
+      <ion-list>
+            <div ng-if="tasksProgress.length>0" >
+                <a href ui-sref="app.details({id:task.id})" ng-repeat="task in tasksProgress ">
+                <ion-item class="item"> 
+          <h2>{{task.title}}</h2>
+          <p><i>{{task.desc}}<i></p>
+          <span>
+            ${{(task.min+task.max)/2 | number:0}}
+          </span>
+          </ion-item>
+        </div>
+          </a>
+        
+        </div>
+
+        <div ng-if="tasksProgress.length==0" class="padding">
+          <center>
+            <h1>Oops.</h1>
+            <p>Seems like you don't have any tasks yet!</p>
+            <button class="button button-block button-balanced" type="button" ng-click="createJob()">Create a Request!</button>
+          </center>
+        </div>
+
+      </ion-list>
+    </ion-content>
+</ion-view>

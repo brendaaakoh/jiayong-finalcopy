@@ -1,0 +1,44 @@
+   <ion-header-bar class="bar-subheader">
+        <div class="button-bar">
+            <div class="button-bar">
+                <a class="button button-clear button-assertive" tab-state ng-click="goto('app.progress')">In Progress</a>
+                <a class="button button-clear button-assertive" tab-state ng-click="goto('app.pending')">Pending</a>
+                <a class="button button-clear button-assertive" tab-state ng-click="goto('app.completed')">Completed</a>
+                <a class="button button-clear button-assertive" tab-state ng-click="goto('app.rejected')">Rejected</a>
+            </div>
+        </div>
+  </ion-header-bar>
+ <ion-view view-title="Rejected">  
+    <ion-content>
+        <ion-list>
+        <div ng-if="tasksRejected.length>0">
+          <a ng-repeat="task in tasksRejected" href ui-sref="app.details({id:task.id})">
+            <div class="item item-divider" ng-if="task.status == 'Rejected Proposal'">
+                Proposal
+            </div>
+            <div class="item item-divider" ng-if="task.status == 'Rejected Completion'">
+                Task Completion
+            </div>
+            <ion-item class="item"> 
+          <h2>{{task.title}}</h2>
+          <p><i>{{task.desc}}<i></p>
+          <span>
+            Reason: {{task.remarks}}
+          </span>
+          </ion-item>
+        </div>
+          </a>
+        </div>
+</ion-list>
+        <div ng-if="tasksRejected.length==0" class="empty-content">
+          <center>
+            <h1>YAY!</h1>
+            <p>Seems like you don't have any tasks rejected!</p>
+            <p>Why not find some tasks to do?</p>
+            <button class="button button-balanced" type="button" ng-click="clearHistoryAndGo('app.find')">Find Tasks!</button>
+          </center>
+        </div>
+
+      
+    </ion-content>
+</ion-view>
